@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiet Sinh Vien</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-2xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Chi Tiet Sinh Vien</h1>
+            <a href="/students"
+               class="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition">
+                ← Quay lai
+            </a>
+        </div>
+
+        <!-- Thong tin sinh vien -->
+        <div class="bg-white rounded-lg shadow p-6">
+            <div class="space-y-4">
+                <div class="flex border-b border-gray-100 pb-3">
+                    <span class="w-24 text-gray-500 font-medium">ID:</span>
+                    <span class="font-mono" th:text="${student.id}">ID</span>
+                </div>
+                <div class="flex border-b border-gray-100 pb-3">
+                    <span class="w-24 text-gray-500 font-medium">Ho Ten:</span>
+                    <span class="font-semibold text-gray-800" th:text="${student.name}">Ten</span>
+                </div>
+                <div class="flex border-b border-gray-100 pb-3">
+                    <span class="w-24 text-gray-500 font-medium">Email:</span>
+                    <span th:text="${student.email}">Email</span>
+                </div>
+                <div class="flex pb-1">
+                    <span class="w-24 text-gray-500 font-medium">Tuoi:</span>
+                    <span th:text="${student.age}"
+                          th:class="${student.age < 18} ? 'font-bold text-red-600' : ''">0</span>
+                    <span th:if="${student.age < 18}"
+                          class="ml-2 text-xs bg-red-200 text-red-800 px-2 py-0.5 rounded-full font-medium">
+                        Chua du 18
+                    </span>
+                </div>
+            </div>
+
+            <!-- Action buttons -->
+            <div class="mt-8 flex gap-3">
+                <a th:href="@{/students/{id}/edit(id=${student.id})}"
+                   class="px-5 py-2.5 bg-yellow-500 text-white font-medium rounded-lg shadow hover:bg-yellow-600 transition">
+                    Chinh Sua
+                </a>
+                <form th:action="@{/students/{id}/delete(id=${student.id})}" method="POST"
+                      onsubmit="return confirm('Ban co chac chan muon xoa sinh vien nay?');">
+                    <button type="submit"
+                            class="px-5 py-2.5 bg-red-600 text-white font-medium rounded-lg shadow hover:bg-red-700 transition">
+                        Xoa
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

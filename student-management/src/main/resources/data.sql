@@ -1,0 +1,12 @@
+INSERT INTO students (id, name, email, age) VALUES ('1', 'Nguyen Van A', 'vana@example.com', 20) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('2', 'Tran Thi B', 'thib@example.com', 21) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('3', 'Le Van C', 'vanc@example.com', 22) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('4', 'Pham Thi D', 'thid@example.com', 19) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('5', 'Hoang Van E', 'vane@example.com', 20) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('6', 'Nguyen Thi F', 'thif@example.com', 23) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('7', 'Vo Van G', 'vang@example.com', 21) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('8', 'Dang Thi H', 'thih@example.com', 20) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('9', 'Bui Van I', 'vani@example.com', 22) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('10', 'Ly Thi K', 'thik@example.com', 19) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('11', 'Truong Van L', 'vanl@example.com', 24) ON CONFLICT (id) DO NOTHING;
+INSERT INTO students (id, name, email, age) VALUES ('12', 'Do Thi M', 'thim@example.com', 21) ON CONFLICT (id) DO NOTHING;

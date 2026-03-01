@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sach Sinh Vien</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="max-w-5xl mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="flex items-center justify-between mb-6">
+            <h1 class="text-3xl font-bold text-gray-800">Danh Sach Sinh Vien</h1>
+            <a href="/students/new"
+               class="px-5 py-2.5 bg-green-600 text-white font-medium rounded-lg shadow hover:bg-green-700 transition">
+                + Them Moi
+            </a>
+        </div>
+
+        <!-- Form Tim Kiem -->
+        <form action="/students" method="GET" class="mb-6 flex gap-3">
+            <input type="text" name="keyword" th:value="${keyword}"
+                   placeholder="Nhap ten sinh vien..."
+                   class="flex-1 px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" />
+            <button type="submit"
+                    class="px-6 py-2 bg-blue-600 text-white font-medium rounded-lg shadow hover:bg-blue-700 transition">
+                Tim
+            </button>
+            <a th:if="${keyword != null and !keyword.isEmpty()}" href="/students"
+               class="px-6 py-2 bg-gray-300 text-gray-700 font-medium rounded-lg shadow hover:bg-gray-400 transition flex items-center">
+                Xoa bo loc
+            </a>
+        </form>
+
+        <!-- Thong bao ket qua tim kiem -->
+        <p th:if="${keyword != null and !keyword.isEmpty()}" class="mb-4 text-sm text-gray-600">
+            Ket qua tim kiem cho "<span th:text="${keyword}" class="font-semibold"></span>":
+            <span th:text="${#lists.size(dsSinhVien)}" class="font-semibold"></span> sinh vien
+        </p>
+
+        <!-- Bang danh sach -->
+        <div class="overflow-hidden rounded-lg shadow">
+            <table class="w-full border-collapse bg-white">
+                <thead>
+                    <tr class="bg-blue-600 text-white text-left">
+                        <th class="px-6 py-3 font-semibold">ID</th>
+                        <th class="px-6 py-3 font-semibold">Ho va Ten</th>
+                        <th class="px-6 py-3 font-semibold">Email</th>
+                        <th class="px-6 py-3 font-semibold">Tuoi</th>
+                        <th class="px-6 py-3 font-semibold text-center">Thao Tac</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="student, iterStat : ${dsSinhVien}"
+                        th:class="${student.age < 18}
+                            ? 'bg-red-50 text-red-700 border-b border-gray-200 hover:bg-red-100'
+                            : (${iterStat.odd} ? 'bg-gray-50 border-b border-gray-200 hover:bg-gray-100' : 'bg-white border-b border-gray-200 hover:bg-gray-100')">
+                        <td class="px-6 py-3 font-mono text-sm" th:text="${student.id}">ID Mau</td>
+                        <td class="px-6 py-3">
+                            <span th:text="${student.name}">Ten Mau</span>
+                            <span th:if="${student.age < 18}"
+                                  class="ml-2 inline-block text-xs bg-red-200 text-red-800 px-2 py-0.5 rounded-full font-medium">
+                                Chua du 18
+                            </span>
+                        </td>
+                        <td class="px-6 py-3" th:text="${student.email}">Email Mau</td>
+                        <td class="px-6 py-3">
+                            <span th:text="${student.age}"
+                                  th:class="${student.age < 18} ? 'font-bold text-red-600' : ''">0</span>
+                        </td>
+                        <td class="px-6 py-3 text-center">
+                            <a th:href="@{/students/{id}(id=${student.id})}"
+                               class="inline-block px-3 py-1 text-sm bg-blue-100 text-blue-700 rounded hover:bg-blue-200 transition">
+                                Xem Chi Tiet
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Thong bao khi khong co ket qua -->
+        <div th:if="${#lists.isEmpty(dsSinhVien)}" class="text-center py-8 text-gray-500">
+            Khong tim thay sinh vien nao.
+        </div>
+
+        <!-- Tong so sinh vien -->
+        <p class="mt-4 text-sm text-gray-500">
+            Tong cong: <span th:text="${#lists.size(dsSinhVien)}" class="font-semibold"></span> sinh vien
+        </p>
+    </div>
+</body>
+</html>
