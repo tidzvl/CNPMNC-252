@@ -8,7 +8,7 @@
 
 ## Public URL
 
-> (Se cap nhat sau khi deploy len Render)
+> [Student Management System](https://cnpmnc-252.onrender.com/students)
 
 ## Huong dan chay du an
 
@@ -27,8 +27,6 @@
 cd student-management
 ./mvnw spring-boot:run
 ```
-
-Ung dung chay tai: `https://cnpmnc-252.onrender.com/students`
 
 ### Chay voi Docker
 
