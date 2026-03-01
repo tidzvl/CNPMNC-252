@@ -2,10 +2,9 @@
 
 ## Danh sach nhom
 
-| MSSV | Ho va Ten |
-|------|-----------|
-|      |           |
-|      |           |
+| MSSV  |    Ho va Ten   |
+|-------|----------------|
+|2213491|Nguyễn Chánh Tín|
 
 ## Public URL
 
@@ -29,7 +28,7 @@ cd student-management
 ./mvnw spring-boot:run
 ```
 
-Ung dung chay tai: `http://localhost:8080`
+Ung dung chay tai: `https://cnpmnc-252.onrender.com/students`
 
 ### Chay voi Docker
 
@@ -57,6 +56,24 @@ docker compose up --build
 | Them sinh vien moi         | GET    | /students/new                    |
 | Xem chi tiet               | GET    | /students/{id}                   |
 | Chinh sua sinh vien        | GET    | /students/{id}/edit              |
+
+### Screenshots (Lab 4)
+
+**Danh sach sinh vien** (`/students`)
+
+![Danh sach sinh vien](example/students.jpeg)
+
+**Chi tiet sinh vien** (`/students/{id}`)
+
+![Chi tiet sinh vien](example/students_id.jpeg)
+
+**Chinh sua sinh vien** (`/students/{id}/edit`)
+
+![Chinh sua sinh vien](example/students_id_edit.jpeg)
+
+**Xoa sinh vien** (`/students/{id}/delete`)
+
+![Xoa sinh vien](example/students_id_delete.jpeg)
 
 ## Cau hoi ly thuyet
 
